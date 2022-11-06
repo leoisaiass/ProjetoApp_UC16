@@ -5,7 +5,7 @@ import * as Animatable from 'react-native-animatable'
 
 import { useNavigation } from '@react-navigation/native'
 
-export default function Welcome() {
+export default function BoasVindas() {
     const navigation = useNavigation();
 
     return (
@@ -21,12 +21,12 @@ export default function Welcome() {
             </View>
 
             <Animatable.View delay={600} animation="fadeInUp" style={styles.containerForm}>
-                <Text style={styles.title}>Leonardo</Text>
-                <Text style={styles.text}>Faça o login para começar</Text>
+                <Text style={styles.title}>São Paulo Para Todos</Text>
+                <Text style={styles.text}>Acompanhe os políticos eleitos no estado de São Paulo</Text>
 
                 <TouchableOpacity 
                     style={styles.button}
-                    onPress={ () => navigation.navigate('SingIn')}
+                    onPress={ () => navigation.navigate('Login')}
                     >
                     <Text style={styles.buttonText}>Acessar</Text>
                 </TouchableOpacity>

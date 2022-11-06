@@ -1,7 +1,8 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
-import Welcome from '../pages/Welcome'
-import SingIn from '../pages/SingIn'
+import { ScrollView } from "react-native";
+import BoasVindas from '../pages/BoasVindas'
+import Login from '../pages/Login'
+import Cadastro from '../pages/Cadastro'
 
 const Stack = createNativeStackNavigator();
 
@@ -9,17 +10,22 @@ export default function Routes() {
     return (
         <Stack.Navigator>
             <Stack.Screen
-              name="Welcome"
-              component={Welcome}
+              name="BoasVindas"
+              component={BoasVindas}
               options={{ headerShown: false }}
             />
 
             <Stack.Screen
-              name="SingIn"
-              component={SingIn}
+              name="Login"
+              component={Login}
               options={{ headerShown: false }}
             />  
 
-        </Stack.Navigator>
+            <Stack.Screen
+              name="Cadastro"
+              component={Cadastro}
+              options={{ headerShown: false }}
+            /> 
+        </Stack.Navigator>      
     )
 }
