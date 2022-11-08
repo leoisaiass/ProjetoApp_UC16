@@ -1,8 +1,14 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ScrollView } from "react-native";
-import BoasVindas from '../pages/BoasVindas'
-import Login from '../pages/Login'
-import Cadastro from '../pages/Cadastro'
+import BoasVindas from '../screens/BoasVindas'
+import Login from '../screens/Login'
+import Cadastro from '../screens/Cadastro'
+import TelaInicial from "../screens/TelaInicial";
+import Politicos from "../screens/Politicos";
+import Partidos from "../screens/Partidos";
+import Favoritos from "../screens/Favoritos";
+import MinhaConta from "../screens/MinhaConta";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +32,37 @@ export default function Routes() {
               component={Cadastro}
               options={{ headerShown: false }}
             /> 
+
+            <Stack.Screen
+              name="TelaInicial"
+              component={TelaInicial}
+              options={{ headerShown: false }}
+            /> 
+
+            <Stack.Screen
+              name="Politicos"
+              component={Politicos}
+              options={{ headerShown: false }}
+            /> 
+
+            <Stack.Screen
+              name="Partidos"
+              component={Partidos}
+              options={{ headerShown: false }}
+            /> 
+
+            <Stack.Screen
+              name="Favoritos"
+              component={Favoritos}
+              options={{ headerShown: false }}
+            /> 
+            
+            <Stack.Screen
+              name="MinhaConta"
+              component={MinhaConta}
+              options={{ headerShown: false }}
+            /> 
+            
         </Stack.Navigator>      
     )
 }

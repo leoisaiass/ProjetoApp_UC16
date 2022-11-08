@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Button } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Button, Alert } from 'react-native';
 
 import * as Animatable from 'react-native-animatable';
 
 import { useNavigation } from '@react-navigation/native';
-import * as ImagePicker from 'expo-image-picker'
+import * as ImagePicker from 'expo-image-picker';
+import { ipserver } from '../../config/servidor';
 
 
 export default function Login() {
@@ -27,6 +28,13 @@ export default function Login() {
       }
     };
 
+    const [senha, setSenha] = useState("");
+    const [nomeCompleto, setNomeCompleto] = useState("");
+    const [email, setEmail] = useState("");
+    const [idade,setidade] = useState("");
+    
+
+
     return (
 
         <View style={styles.container}>
@@ -40,25 +48,46 @@ export default function Login() {
                 <TextInput
                     placeholder='Digite seu nome completo'
                     style={styles.input}
+                    value={nomeCompleto}
+                    onChangeText={(value) => setNomeCompleto(value)}
                 />
 
                 <Text style={styles.title}>Email</Text>
                 <TextInput
                     placeholder='Digite um email'
                     style={styles.input}
+                    keyboardType="email-address"
+                    value={email}
+                    onChangeText={(value) => setEmail(value)}
                 />
 
                 <Text style={styles.title}>Senha</Text>
                 <TextInput
                     placeholder='Digite uma senha'
                     style={styles.input}
+                    secureTextEntry
+                    value={senha}
+                    onChangeText={(value) => setSenha(value)}
                 />  
 
-                <TouchableOpacity style={styles.button}>
+                <Text style={styles.title}>Idade</Text>
+                <TextInput
+                    placeholder='Digite sua idade'
+                    style={styles.input}
+                     value={idade}
+                    onChangeText={(value) => setidade(value)}
+                />  
+
+                <TouchableOpacity  onPress={() =>{
+                efetuarCadastro(senha,nomeCompleto,email,idade,"usuario.jpg");
+                setSenha("");
+                setNomeCompleto("");
+                setEmail("");
+            }} style={styles.button}>
                     <Text style={styles.buttonText}>Acessar</Text>
                 </TouchableOpacity>
 
-                <Button style={styles.botaoGaleria} title="Selecione uma imagem da galeria" onPress={pickImage} />
+                <Button style={styles.botaoGaleria} title="Selecione sua imagem de perfil" onPress={pickImage} />
                 {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
 
             </Animatable.View>
@@ -66,6 +95,39 @@ export default function Login() {
         </View>    
     )
 }
+
+function efetuarCadastro(senha,nome,email,idade,imgUsuario){
+    
+    if(
+    senha=="" || 
+    nome == "" || 
+    email == "" ) {
+        return Alert.alert("Você deve preencher todos os campos");
+    }
+    fetch(`${ipserver}/usuarios/cadastro`,{
+        method:"POST",
+        headers:{
+            accept:"application/json",
+            "content-type":"application/json"
+        },
+        body:JSON.stringify({
+            senha:senha,
+            nomeUsuario:nome,
+            email:email.toLowerCase(),
+            idade: idade,
+            imgUsuario: imgUsuario
+        })
+    })
+    .then((response)=>response.json())
+    .then((rs)=>{
+        console.log(rs)
+        Alert.alert("Cadastro","Cadastro realizado")
+    })
+    .catch((erro)=>console.error(`Erro ao tentar acessar a api -> ${erro}`))
+    
+}
+
+
 
 const styles = StyleSheet.create({
     container:{

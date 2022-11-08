@@ -27,7 +27,9 @@ export default function Login() {
                     style={styles.input}
                 />  
 
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity 
+                    style={styles.button}
+                    onPress={ () => navigation.navigate('TelaInicial')}>
                     <Text style={styles.buttonText}>Acessar</Text>
                 </TouchableOpacity>
 
