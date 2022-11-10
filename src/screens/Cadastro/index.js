@@ -14,7 +14,7 @@ export default function Login() {
     const [image, setImage] = useState(null);
 
     const pickImage = async () => {
-      let result = await ImagePicker.launchImageLibraryAsync({
+      let result = await ImagePicker.launchImageLibraryAsync({ 
         mediaTypes: ImagePicker.MediaTypeOptions.All,
         allowsEditing: true,
         aspect: [4, 3],

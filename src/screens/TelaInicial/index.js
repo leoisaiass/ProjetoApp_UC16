@@ -26,15 +26,15 @@ export default function TelaInicial(){
                 <Text style={styles.texto}>Partidos</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.estiloicone} onPress={ () => navigation.navigate('Favoritos')}>
+            {/* <TouchableOpacity style={styles.estiloicone} onPress={ () => navigation.navigate('Favoritos')}>
                 <AntDesign size={35} name="book" style={styles.iconeemsi}/>
                 <Text style={styles.texto}>Favoritos</Text>
-            </TouchableOpacity>
-
+            </TouchableOpacity> */}
+{/* 
             <TouchableOpacity style={styles.estiloicone} onPress={ () => navigation.navigate('MinhaConta')}>
                 <AntDesign size={35} name="book" style={styles.iconeemsi}/>
                 <Text style={styles.texto}>Minha Conta</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
         </View>
     )
@@ -42,7 +42,8 @@ export default function TelaInicial(){
 
 export const styles = StyleSheet.create({
     footer: {
-        position: "absolute",
+        // position: "relative",
+        // position: 'absolute',
         bottom: 0,
         flexDirection: "row",
         backgroundColor: "#404040",
@@ -57,6 +58,8 @@ export const styles = StyleSheet.create({
     },
     iconeemsi: {
         color: "white",
+        
+
     },
     texto: {
         textAlign: "center",

@@ -39,16 +39,17 @@ export default function Routes() {
               options={{ headerShown: false }}
             /> 
 
+            
             <Stack.Screen
               name="Politicos"
               component={Politicos}
-              options={{ headerShown: false }}
+              // options={{ headerShown: false }}
             /> 
 
             <Stack.Screen
               name="Partidos"
               component={Partidos}
-              options={{ headerShown: false }}
+              // options={{ headerShown: false }}
             /> 
 
             <Stack.Screen
